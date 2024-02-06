@@ -9,7 +9,7 @@ export default function Home() {
       {homePage && (
         <>
           <h2>Welcome to NC-News! 🎊</h2>
-          <p>
+          <article>
             NC-News is your go-to platform for a diverse collection of articles,
             insightful user discussions, and a vibrant community. Similar to
             Reddit, NC-News empowers you to explore, engage, and contribute to a
@@ -50,7 +50,7 @@ export default function Home() {
               {" "}
               Please note this app is currently under development!
             </strong>
-          </p>
+          </article>
         </>
       )}
     </>
