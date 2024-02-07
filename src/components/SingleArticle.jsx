@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../utils/apis";
+import Comments from "./Comments";
 
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -16,6 +17,7 @@ export default function SingleArticle() {
         setIsLoading(false);
       });
   }, [article_id]);
+
   return (
     <>
       {isLoading && <p>Loading your selected article ⌛</p>}
@@ -26,14 +28,15 @@ export default function SingleArticle() {
           <p>Author: {article.author}</p>
           <p>Topic: {article.topic}</p>
           <p>Article Id: {article.article_id}</p>
-          <p>Comment count: {article.comment_count}</p>
-          <p>Created at: {article.created_at}</p>
+          <p>Created at: {new Date(article.created_at).toLocaleString()}</p>
           <p>Votes: {article.votes}</p>
           <img
             src={article.article_img_url}
             alt={"This is an image of " + article.title}
             style={{ width: "100%" }}
           />
+          <h2>Comments</h2>
+          <Comments article_id={article_id} />
         </ul>
       )}
     </>

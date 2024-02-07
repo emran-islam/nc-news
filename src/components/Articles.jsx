@@ -27,18 +27,19 @@ export default function Articles() {
                 {article.title}
               </Link>
               <div className="article-content">
-              <p>Author: {article.author}</p>
-              <p>Topic: {article.topic}</p>
-              <p>Article Id: {article.article_id}</p>
-              <p>Comment count: {article.comment_count}</p>
-              <p>Created at: {article.created_at}</p>
-              <p>Votes: {article.votes}</p>
+                <p>Author: {article.author}</p>
+                <p>Topic: {article.topic}</p>
+                <p>Article Id: {article.article_id}</p>
+                <p>Comment count: {article.comment_count}</p>
+                <p>
+                  Created at: {new Date(article.created_at).toLocaleString()}
+                </p>
+                <p>Votes: {article.votes}</p>
               </div>
               <img
                 src={article.article_img_url}
                 alt={"This is an image of " + article.title}
                 style={{ width: "100%" }}
-                className="article-image"
               />
               <br />
               <br />
