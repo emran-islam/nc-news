@@ -17,7 +17,22 @@ export function getSingleArticle(article_id) {
 }
 
 export function getCommentsByArticle(article_id) {
-  return ncNewsApi.get(`/articles/${article_id}/comments`).then((res) => {
-    return res.data.comments;
-  });
+  return ncNewsApi
+    .get(`/articles/${article_id}/comments`)
+    .then((res) => res.data.comments)
+    .catch((err) => {
+      if (err.response && err.response.status === 404) {
+        return [];
+      } else {
+        throw err;
+      }
+    });
+}
+
+export function patchVoteOnArticle(article_id, vote) {
+  return ncNewsApi
+    .patch(`/articles/${article_id}`, { inc_votes: vote })
+    .then((res) => {
+      return res.data.article;
+    });
 }

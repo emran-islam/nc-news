@@ -19,17 +19,23 @@ export default function Comments({ article_id }) {
     <>
       {isLoading && <p>Loading comments for this article ⌛</p>}
       {!isLoading && (
-        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-          {comments.map((comment) => (
-            <li key={comment.comment_id}>
-              <p>{comment.body}</p>
-              <p>Author: {comment.author}</p>
-              <p>Created at: {new Date(comment.created_at).toLocaleString()}</p>
-              <p>Votes: {comment.votes}</p>
-              <p>Article Id: {comment.article_id}</p>
-            </li>
-          ))}
-        </ul>
+        <>
+          {comments.length === 0 ? (
+            <p>No comments yet!</p>
+          ) : (
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {comments.map((comment) => (
+                <li key={comment.comment_id}>
+                  <p>{comment.body}</p>
+                  <p>Author: {comment.author}</p>
+                  <p>Created at: {new Date(comment.created_at).toLocaleString()}</p>
+                  <p>Votes: {comment.votes}</p>
+                  <p>Article Id: {comment.article_id}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       )}
     </>
   );
