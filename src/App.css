@@ -85,3 +85,7 @@ li:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
+
+.single_article_image{
+  padding-top: 50px;
+}

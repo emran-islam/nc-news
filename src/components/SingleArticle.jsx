@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../utils/apis";
 import Comments from "./Comments";
+import Vote from "./Votes";
 
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -29,11 +30,12 @@ export default function SingleArticle() {
           <p>Topic: {article.topic}</p>
           <p>Article Id: {article.article_id}</p>
           <p>Created at: {new Date(article.created_at).toLocaleString()}</p>
-          <p>Votes: {article.votes}</p>
+          <Vote article_id={article_id} initialVotes={article.votes} />
           <img
             src={article.article_img_url}
             alt={"This is an image of " + article.title}
             style={{ width: "100%" }}
+            className="single_article_image"
           />
           <h2>Comments</h2>
           <Comments article_id={article_id} />
