@@ -37,7 +37,10 @@ export default function SingleArticle() {
             style={{ width: "100%" }}
             className="single_article_image"
           />
-          <h2>Comments</h2>
+          <h2>
+            Below is a list of all comments to read or you can add a comment of
+            your own!
+          </h2>
           <Comments article_id={article_id} />
         </ul>
       )}
