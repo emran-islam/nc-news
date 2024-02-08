@@ -37,10 +37,16 @@ export function patchVoteOnArticle(article_id, vote) {
     });
 }
 
-export const postCommentOnArticle = (article_id, username, body) => {
+export function postCommentOnArticle(article_id, username, body) {
   return ncNewsApi
     .post(`/articles/${article_id}/comments`, { username, body })
     .then((res) => {
       return res.data.comments;
     });
-};
+}
+
+export function deleteCommentOnArticle(comment_id) {
+  return ncNewsApi.delete(`/comments/${comment_id}`).catch((err) => {
+    console.log(err);
+  });
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCommentsByArticle } from "../utils/apis";
-import CommentAdder  from "./CommentAdder";
+import CommentAdder from "./CommentAdder";
+import CommentDelete from "./CommentDelete";
 
 export default function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -41,6 +42,10 @@ export default function Comments({ article_id }) {
                     </p>
                     <p>Votes: {comment.votes}</p>
                     <p>Article Id: {comment.article_id}</p>
+                    <CommentDelete
+                      setComments={setComments}
+                      comment={comment}
+                    />
                   </li>
                 ))}
               </ul>
