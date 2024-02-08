@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postCommentOnArticle } from "../utils/apis";
-import { useContext } from "react";
 import { UserContext } from "../contexts/User";
 
 export default function CommentAdder(props) {
@@ -33,7 +32,7 @@ export default function CommentAdder(props) {
         onChange={handleChange}
         required
       ></input>
-      <button type="submit">Post Comment!</button>
+      <button type="submit">Post Comment</button>
     </form>
   );
 }
