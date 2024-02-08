@@ -5,9 +5,8 @@ export default function Vote({ article_id, initialVotes }) {
   const [votes, setVotes] = useState(initialVotes);
 
   const handleVote = (voteChange) => {
-    patchVoteOnArticle(article_id, voteChange).then((updatedArticle) => {
-      setVotes(updatedArticle.votes);
-    });
+    setVotes((prevVotes) => prevVotes + voteChange);
+    patchVoteOnArticle(article_id, voteChange);
   };
 
   return (

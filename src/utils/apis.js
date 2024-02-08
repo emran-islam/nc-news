@@ -36,3 +36,11 @@ export function patchVoteOnArticle(article_id, vote) {
       return res.data.article;
     });
 }
+
+export const postCommentOnArticle = (article_id, username, body) => {
+  return ncNewsApi
+    .post(`/articles/${article_id}/comments`, { username, body })
+    .then((res) => {
+      return res.data.comments;
+    });
+};
