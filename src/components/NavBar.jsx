@@ -13,6 +13,9 @@ export default function NavBar({ setLinkClicked }) {
       <Link to="/articles" onClick={handleLinkClick}>
         Articles
       </Link>
+      <Link to="/topics" onClick={handleLinkClick}>
+        Topics
+      </Link>
     </nav>
   );
 }

@@ -1,20 +1,25 @@
 import { useState, useEffect } from "react";
-import { getArticles } from "../utils/apis";
-import { Link } from "react-router-dom";
+import { getArticles, getTopics } from "../utils/apis";
+import { Link, useParams } from "react-router-dom";
 
 export default function Articles() {
+  const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticles()
       .then((articlesFromApi) => {
-        setArticles(articlesFromApi);
+        const filteredArticles = topic
+          ? articlesFromApi.filter((article) => article.topic === topic)
+          : articlesFromApi;
+
+        setArticles(filteredArticles);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [topic]);
 
   return (
     <>
