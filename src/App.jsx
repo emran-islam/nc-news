@@ -3,6 +3,8 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import Topics from "./components/Topics";
+import TopicsArticles from "./components/TopicArticles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./contexts/User";
 import { useState } from "react";
@@ -27,6 +29,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route path="/topics" element={<Topics />} />
+            <Route path="/topics/:topic" element={<TopicsArticles />} />
           </Routes>
         </>
       </UserContext.Provider>
